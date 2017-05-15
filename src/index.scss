@@ -1,3 +1,51 @@
-body {
-  background-color: lightgrey;
+.container {
+  display: table;
+  margin: 0 auto;
+  label {
+    display: none;
+  }
+  #new-item {
+    height: 40px;
+    width: 500px;
+    padding-left: 10px;
+    margin: 20px 0;
+    font-size: 20px;
+    font-family: monospace;
+    outline: 0;
+    border: 1px solid #ccc;
+  }
+  .tasks {
+    .task {
+      font-size: 20px;
+      font-family: monospace;
+      margin-bottom: 10px;
+      border-top: 1px solid #ccc;
+      border-bottom: 1px solid #ccc;
+      padding: 10px;
+      i {
+        float: right;
+        cursor: pointer;
+      }
+      #edit-item {
+        height: 30px;
+        padding-left: 10px;
+        outline: 0;
+        font-size: 20px;
+        font-family: monospace;
+        border: 0;
+        border-left: 2px solid #ccc;
+        border-right: 2px solid #ccc;
+      }
+      input[type="checkbox"] {
+        transform: scale(1.5, 1.5);
+        margin-right: 10px;
+        outline: 0;
+        &:checked + .description {
+          color: #0074D9;
+          text-decoration: line-through;
+        }
+      }
+    }
+  }
+
 }
