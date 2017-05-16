@@ -1,4 +1,4 @@
-.container {
+.tasks-container {
   display: table;
   margin: 0 auto;
   label {
@@ -11,16 +11,16 @@
     margin: 20px 0;
     font-size: 20px;
     font-family: monospace;
+    border: 0;
     outline: 0;
-    border: 1px solid #ccc;
+    border-bottom: 2px solid #000;
+    border-radius: 3px;
   }
   .tasks {
     .task {
       font-size: 20px;
       font-family: monospace;
       margin-bottom: 10px;
-      border-top: 1px solid #ccc;
-      border-bottom: 1px solid #ccc;
       padding: 10px;
       i {
         float: right;
@@ -33,19 +33,64 @@
         font-size: 20px;
         font-family: monospace;
         border: 0;
-        border-left: 2px solid #ccc;
-        border-right: 2px solid #ccc;
+        border-left: 2px solid #f63c3c;
+        border-right: 2px solid #f63c3c;
       }
       input[type="checkbox"] {
         transform: scale(1.5, 1.5);
         margin-right: 10px;
         outline: 0;
         &:checked + .description {
-          color: #0074D9;
+          color: #f63c3c;
           text-decoration: line-through;
         }
       }
     }
   }
+}
 
+h1 {
+  text-align: center;
+  font-family: monospace;
+  font-weight: normal;
+}
+
+label {
+  font-family: monospace;
+  font-size: 16px;
+}
+
+#full-name,
+#user-name,
+#email,
+#password,
+#password-confirmation
+ {
+  border: 0;
+  outline: 0;
+  border-bottom: 2px solid #000;
+  border-radius: 3px;
+  margin-left: 10px;
+}
+
+button, .register, .sign-out {
+  background-color: #000;
+  border: 0;
+  border-radius: 3px;
+  outline: 0;
+  font-family: sans-serif;
+  color: #fff;
+  font-size: 12px;
+  font-family: monospace;
+  padding: 10px;
+  transition: 0.5s background linear;
+  cursor: pointer;
+  &:hover {
+    background-color: #f63c3c;
+
+  }
+}
+
+.register, .sign-out {
+  text-decoration: none;
 }

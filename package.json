@@ -69,5 +69,9 @@
     "extends": [
       "xo-space"
     ]
+  },
+  "dependencies": {
+    "angular-route": "^1.6.4",
+    "angular-toastr": "^2.1.1"
   }
 }

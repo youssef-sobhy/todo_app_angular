@@ -1,0 +1,27 @@
+<div class="tasks-container" ng-controller="TasksController">
+  
+  <!-- New task form -->
+
+  <form ng-submit="addTask()">
+    <label for="new-item">New item</label>
+    <input type="text" ng-model="description" name="description" id="new-item">
+  </form>
+
+  <!-- Tasks -->
+
+  <div class="tasks" ng-repeat="task in tasks">
+
+    <div class="task">
+      <span>
+        <form ng-submit="updateTask(task); editing = false" ng-show="editing" class="editing-form">
+          <label for="edit-item"></label>
+          <input type="text" name="newDescription" ng-model="task.description" id="edit-item">
+        </form>
+      </span>
+
+      <input type="checkbox" ng-hide="editing" ng-change="completed(task)" ng-model="task.completed">
+      <span ng-hide="editing" ng-dblclick="editing = true" class="description">{{ task.description }}</span>
+      <span><i class="fa fa-times" ng-click="deleteTask(task)" ng-hide="editing"></i></span>
+    </div>
+  </div>
+</div>
