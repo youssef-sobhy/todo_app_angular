@@ -64,6 +64,8 @@
       $scope.current_user = AuthService.current_user;
     });
 
+    $scope.tasks = [];
+
     $http.get(baseUrl + 'tasks.json')
       .then(
         function (success) {
