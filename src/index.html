@@ -1,41 +1,51 @@
 <!doctype html>
 <html>
-  <head>
-    <meta charset="utf-8">
-    <title>FountainJS</title>
-    <meta name="description" content="">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="icon" type="image/png" href="http://fountainjs.io/assets/imgs/fountain.png" />
+<head>
+  <meta charset="utf-8">
+  <title>FountainJS</title>
+  <meta name="description" content="">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="icon" type="image/png" href="http://fountainjs.io/assets/imgs/fountain.png" />
   
-    <!-- build:css({.tmp,src}) styles/vendor.css -->
-    <!-- bower:css -->
-    <!-- run `gulp inject` to automatically populate bower styles dependencies -->
-    <!-- endbower -->
-    <!-- endbuild -->
-
-    <!-- build:css({.tmp,src}) styles/app.css -->
-    <link rel="stylesheet" href="index.css"/>
-    <!-- endbuild -->
-  </head>
-
-
-  <body ng-app="app">
-    <app>Loading...</app>
-  </body>
-
-  <!-- build:js({.tmp,src}) scripts/vendor.js -->
-  <!-- bower:js -->
-  <!-- run `gulp inject` to automatically populate bower script dependencies -->
+  <!-- build:css({.tmp,src}) styles/vendor.css -->
+  <!-- bower:css -->
+  <!-- run `gulp inject` to automatically populate bower styles dependencies -->
   <!-- endbower -->
   <!-- endbuild -->
 
-  <!-- build:js({.tmp,src}) scripts/app.js -->
-  <!-- inject:js -->
-  <!-- js files will be automatically insert here -->
-  <!-- endinject -->
-  <!-- inject:partials -->
-  <!-- angular templates will be automatically converted in js and inserted here -->
-  <!-- endinject -->
+  <!-- build:css({.tmp,src}) styles/app.css -->
+  <link rel="stylesheet" href="index.css"/>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
   <!-- endbuild -->
+</head>
+
+
+<body ng-app="todoApp">
+  <h1>Smash your todos!</h1>
+  <base href="/">
+
+  <div ng-controller="MainController">
+    <p ng-show="signed_in">Welcome {{ current_user.full_name }}, eh el a5bar?</p>
+
+    <a ng-click="logOut()" href="#" ng-show="signed_in" class="sign-out">Sign out</a>
+  </div>
+
+  <div ng-view></div>
+</body>
+
+<!-- build:js({.tmp,src}) scripts/vendor.js -->
+<!-- bower:js -->
+<!-- run `gulp inject` to automatically populate bower script dependencies -->
+<!-- endbower -->
+<!-- endbuild -->
+
+<!-- build:js({.tmp,src}) scripts/app.js -->
+<!-- inject:js -->
+<!-- js files will be automatically insert here -->
+<!-- endinject -->
+<!-- inject:partials -->
+<!-- angular templates will be automatically converted in js and inserted here -->
+<!-- endinject -->
+<!-- endbuild -->
 </html>
 

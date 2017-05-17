@@ -1,0 +1,33 @@
+<div class="registration-form" ng-controller="UsersController">
+  <form ng-submit="registerUser()" ng-init="registrationForm = {}">
+    <p>
+      <label for="full-name">Full name</label>
+      <input type="text" name="full_name" id="full-name" ng-model="registrationForm.full_name">
+    </p>
+
+    <p>
+      <label for="user-name">Username</label>
+      <input type="text" name="user_name" id="user-name" ng-model="registrationForm.user_name">
+    </p>
+
+    <p>
+      <label for="email">Email</label>
+      <input type="email" name="email" id="email" ng-model="registrationForm.email">
+    </p>
+
+    <p>
+      <label for="password">Password</label>
+      <input type="password" name="password" id="password" ng-model="registrationForm.password">
+    </p>
+
+    <p>
+      <label for="password-confirmation">Password confirmation</label>
+      <input type="password" name="password_confirmation" id="password-confirmation" ng-model="registrationForm.password_confirmation">
+    </p>
+
+    <button type="Submit">Register</button>
+  </form>
+</div>
+
+
+
