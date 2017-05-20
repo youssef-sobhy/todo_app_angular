@@ -1,81 +1,81 @@
 // Tasks Controller
 angular
   .module('todoApp')
-  .controller('TasksController', TasksController)
+  .controller('TasksController', TasksController);
 
-function TasksController($scope, $http, AuthService) {
+function TasksController($scope, $http, $log, toastr, AuthService) {
+  var vm = this;
   var baseUrl = 'http://localhost:3005/';
-  $scope.current_user = AuthService.current_user;
+  vm.currentUser = AuthService.currentUser;
 
-  $scope.$on('current_user', function () {
-    $scope.current_user = AuthService.current_user;
+  $scope.$on('currentUser', function () {
+    vm.currentUser = AuthService.currentUser;
   });
 
-  AuthService.sign_in(true);
+  AuthService.signIn(true);
 
   $http.get(baseUrl + 'tasks.json')
     .then(
       function (success) {
-        $scope.tasks = success.data.reverse();
+        vm.tasks = success.data.reverse();
       },
       function (error) {
-        console.log(error);
+        $log.error(error);
       }
     );
 
-  $scope.addTask = function () {
+  vm.addTask = function () {
     var data = {
       task: {
-        user_id: $scope.current_user.id,
-        description: $scope.description
+        user_id: vm.currentUser.id,
+        description: vm.description
       }
     };
 
     $http.post(baseUrl + 'tasks.json', data)
     .then(
       function (success) {
-        $scope.tasks.unshift(success.data);
-        $scope.description = '';
+        vm.tasks.unshift(success.data);
+        vm.description = '';
       },
       function (error) {
-        console.log(error);
+        $log.error(error);
       }
     );
   };
 
-  $scope.deleteTask = function (task) {
+  vm.deleteTask = function (task) {
     $http.delete(baseUrl + 'tasks/' + task.id + '.json')
     .then(
-      function (success) {
-        var index = $scope.tasks.indexOf(task);
-        $scope.tasks.splice(index, 1);
+      function () {
+        var index = vm.tasks.indexOf(task);
+        vm.tasks.splice(index, 1);
       },
       function (error) {
-        console.log(error);
+        $log.error(error);
       }
     );
   };
 
-  $scope.updateTask = function (task) {
+  vm.updateTask = function (task) {
     $http.patch(baseUrl + 'tasks/' + task.id + '.json', {task: task})
     .then(
-      function (success) {
+      function () {
         toastr.success('Task was successfully updated!');
       },
       function (error) {
-        console.log(error);
+        $log.error(error);
       }
     );
   };
 
-  $scope.completed = function (task) {
+  vm.completed = function (task) {
     $http.patch(baseUrl + 'tasks/' + task.id + '.json', {task: task})
     .then(
-      function (success) {
-        console.log('Item was successfully completed!');
+      function () {
       },
       function (error) {
-        toastr.error(error)
+        $log.error(error);
       }
     );
   };

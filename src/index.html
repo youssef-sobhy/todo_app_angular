@@ -24,10 +24,10 @@
   <h1>Smash your todos!</h1>
   <base href="/">
 
-  <div ng-controller="MainController">
-    <p ng-show="signed_in">Welcome {{ current_user.full_name }}, eh el a5bar?</p>
+  <div ng-controller="MainController as main">
+    <p ng-show="main.signedIn">Welcome {{ main.currentUser.full_name }}</p>
 
-    <a ng-click="logOut()" href="#" ng-show="signed_in" class="sign-out">Sign out</a>
+    <a ng-click="main.logOut()" ng-show="main.signedIn" class="sign-out">Sign out</a>
   </div>
 
   <div ng-view></div>

@@ -1,15 +1,15 @@
 angular
-.module('todoApp').factory('AuthService', function ($rootScope){
+.module('todoApp').factory('AuthService', function ($rootScope) {
   return {
-    signed_in: false,
-    sign_in: function(value) {
-      this.signed_in = value;
-      $rootScope.$broadcast("signed_in");
+    signedIn: false,
+    signIn: function (value) {
+      this.signedIn = value;
+      $rootScope.$broadcast('signedIn');
     },
-    get_current_user: function(user) {
-    	this.current_user = user;
-    	$rootScope.$broadcast("current_user");
+    getCurrentUser: function (user) {
+      this.currentUser = user;
+      $rootScope.$broadcast('currentUser');
     }
-  }
-})
+  };
+});
 

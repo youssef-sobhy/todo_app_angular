@@ -15,19 +15,22 @@
       $routeProvider
       .when('/', {
         templateUrl: 'app/authentication/sign_in.html',
-        controller: 'AuthController'
+        controller: 'AuthController',
+        controllerAs: 'vm'
       })
       .when('/my_todos', {
         templateUrl: 'app/todos/todos.html',
-        controller: 'TasksController'
+        controller: 'TasksController',
+        controllerAs: 'vm'
       })
       .when('/sign_up', {
         templateUrl: 'app/authentication/sign_up.html',
-        controller: 'AuthController'
+        controller: 'AuthController',
+        controllerAs: 'vm'
       })
       .otherwise({
         redirectTo: '/'
-      })
+      });
 
       $locationProvider.html5Mode(true);
     });
@@ -35,22 +38,24 @@
   // Main Controller
 
   function MainController($scope, $auth, $location, toastr, AuthService) {
-    $scope.signed_in = AuthService.signed_in;
-    $scope.current_user = AuthService.current_user;
+    var vm = this;
 
-    $scope.$on('signed_in', function () {
-      $scope.signed_in = AuthService.signed_in;
+    vm.signedIn = AuthService.signedIn;
+    vm.currentUser = AuthService.currentUser;
+
+    $scope.$on('signedIn', function () {
+      vm.signedIn = AuthService.signedIn;
     });
-    $scope.$on('current_user', function () {
-      $scope.current_user = AuthService.current_user;
+    $scope.$on('currentUser', function () {
+      vm.currentUser = AuthService.currentUser;
     });
 
-    $scope.logOut = function () {
+    vm.logOut = function () {
       $auth.signOut()
       .then(function () {
         toastr.success('You have successfully logged out!');
         $location.path('/');
-        AuthService.sign_in(false);
+        AuthService.signIn(false);
       }).catch(function () {
         toastr.error('Sorry, you cannot sign out :D');
       });
