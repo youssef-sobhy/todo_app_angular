@@ -1,5 +1,5 @@
 angular
-.module('todoApp').factory('AuthService', function($rootScope){
+.module('todoApp').factory('AuthService', function ($rootScope){
   return {
     signed_in: false,
     sign_in: function(value) {
@@ -12,3 +12,4 @@ angular
     }
   }
 })
+
