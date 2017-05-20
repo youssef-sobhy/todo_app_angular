@@ -1,5 +1,5 @@
-<div class="login-form" ng-controller="UsersController">
-  <form ng-submit="loginUser()" ng-init="loginForm = {}">
+<div class="login-form" ng-controller="AuthController as auth">
+  <form ng-submit="auth.loginUser()" ng-init="loginForm = {}">
     <p>
       <label for="email">Email</label>
       <input type="email" name="email" id="email" ng-model="loginForm.email">
@@ -11,6 +11,6 @@
     </p>
 
     <button type="submit">Login</button>
-    <a href="/sign_up" ng-hide="signed_in" class="register">Register</a>
+    <a href="/sign_up"  class="register">Register</a>
   </form>
 </div>

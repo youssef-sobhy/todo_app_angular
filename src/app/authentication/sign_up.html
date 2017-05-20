@@ -1,5 +1,5 @@
-<div class="registration-form" ng-controller="UsersController">
-  <form ng-submit="registerUser()" ng-init="registrationForm = {}">
+<div class="registration-form" ng-controller="AuthController as auth">
+  <form ng-submit="auth.registerUser()" ng-init="registrationForm = {}">
     <p>
       <label for="full-name">Full name</label>
       <input type="text" name="full_name" id="full-name" ng-model="registrationForm.full_name">

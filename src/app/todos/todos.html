@@ -1,27 +1,27 @@
-<div class="tasks-container" ng-controller="TasksController">
+<div class="tasks-container" ng-controller="TasksController as todo">
   
   <!-- New task form -->
 
-  <form ng-submit="addTask()">
+  <form ng-submit="todo.addTask()">
     <label for="new-item">New item</label>
-    <input type="text" ng-model="description" name="description" id="new-item">
+    <input type="text" ng-model="todo.description" name="description" id="new-item">
   </form>
 
   <!-- Tasks -->
 
-  <div class="tasks" ng-repeat="task in tasks">
+  <div class="tasks" ng-repeat="task in todo.tasks">
 
     <div class="task">
       <span>
-        <form ng-submit="updateTask(task); editing = false" ng-show="editing" class="editing-form">
+        <form ng-submit="todo.updateTask(task); editing = false" ng-show="editing" class="editing-form">
           <label for="edit-item"></label>
           <input type="text" name="newDescription" ng-model="task.description" id="edit-item">
         </form>
       </span>
 
-      <input type="checkbox" ng-hide="editing" ng-change="completed(task)" ng-model="task.completed">
+      <input type="checkbox" ng-hide="editing" ng-change="todo.completed(task)" ng-model="task.completed">
       <span ng-hide="editing" ng-dblclick="editing = true" class="description">{{ task.description }}</span>
-      <span><i class="fa fa-times" ng-click="deleteTask(task)" ng-hide="editing"></i></span>
+      <span><i class="fa fa-times" ng-click="todo.deleteTask(task)" ng-hide="editing"></i></span>
     </div>
   </div>
 </div>
