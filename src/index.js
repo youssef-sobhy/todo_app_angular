@@ -33,6 +33,13 @@
       });
 
       $locationProvider.html5Mode(true);
+    })
+    .run(function ($rootScope, $location, AuthService) {
+      $rootScope.$on('$routeChangeStart', function () {
+        if (AuthService.signedIn === false) {
+          $location.path('/');
+        }
+      });
     });
 
   // Main Controller
