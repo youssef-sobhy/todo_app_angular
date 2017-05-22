@@ -12,8 +12,6 @@ function TasksController($scope, $http, $log, toastr, AuthService) {
     vm.currentUser = AuthService.currentUser;
   });
 
-  AuthService.signIn(true);
-
   $http.get(baseUrl + 'tasks.json')
     .then(
       function (success) {
